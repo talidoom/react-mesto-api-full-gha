@@ -9,6 +9,10 @@
     "start": "node app.js",
     "depcheck": "depcheck"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/talidoom/react-mesto-api-full-gha.git"
+  },
   "keywords": [
     "Express.js",
     "MongoDB",

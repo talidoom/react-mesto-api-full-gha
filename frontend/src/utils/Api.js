@@ -73,11 +73,12 @@ class Api {
   }
 
   const api = new Api({
-    baseUrl: 'https://localhost/api',
+    baseUrl: 'http://localhost/api',
     headers: {
-      authorization: '246e7422-483c-4e41-82f4-4aaaa5291029',
+      authorization: '54d35243-1fca-49b5-b527-f8e0d850da93',
       'Content-Type': 'application/json',
     },
   });
 
   export default api;
+

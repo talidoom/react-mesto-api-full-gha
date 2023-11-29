@@ -1,4 +1,5 @@
-export const baseUrl = " https://auth.nomoreparties.co";
+// export const baseUrl = " https://auth.nomoreparties.co";
+export const baseUrl = "http://localhost/api"
 
 function getJson(res) {
   if (res.ok) {

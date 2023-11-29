@@ -9,9 +9,10 @@ const urlRegexPattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-
 
 // node -e "console.log(require('crypto').randomBytes(32).toString('hex'));"
 const JWT_SECRET = '2897bcd5085f35a55a0b99984a428c0e1d502b67caf9ae789b9b400404445b77';
-
+// const JWT_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzAxMjcyMzE0fQ.l9w-71hBtRut6yM_dbngU2Uhzn2XZVJLsi12s-8KJo4';
 module.exports = {
   JWT_SECRET,
+  // JWT_TOKEN,
   urlRegexPattern,
   OK_STATUS,
   HTTP_CREATED_CODE,

@@ -13,6 +13,8 @@ const routeCards = require('./routes/cards');
 const NotFoundError = require('./errors/NotFoundError');
 const errorHandler = require('./middlewares/errorHandler');
 
+const { requestLogger, errorLogger } = require('./middlewares/logger');
+
 const URL = 'mongodb://127.0.0.1:27017/mestodb';
 const { PORT = 3000 } = process.env;
 
@@ -28,6 +30,7 @@ mongoose
   });
 
 const app = express();
+app.use(requestLogger); // Подключаем логгер до обработчиков роутов
 
 app.use(helmet());
 
@@ -45,6 +48,7 @@ app.use('/users', routeUsers);
 app.use('/cards', routeCards);
 
 app.use((req, res, next) => next(new NotFoundError('Ресурс не найден')));
+app.use(errorLogger); // Подключаем логгер до обработчиков роутов
 app.use(errors());
 app.use(errorHandler);
 

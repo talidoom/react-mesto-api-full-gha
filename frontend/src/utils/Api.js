@@ -73,11 +73,11 @@ class Api {
   }
 
   const api = new Api({
-    baseUrl: 'http://localhost/api',
-    headers: {
-      authorization: '54d35243-1fca-49b5-b527-f8e0d850da93',
-      'Content-Type': 'application/json',
-    },
+    baseUrl: 'http://api.talidoom.students.nomoredomainsmonster.ru',
+    // headers: {
+    //   authorization: '54d35243-1fca-49b5-b527-f8e0d850da93',
+    //   'Content-Type': 'application/json',
+    // },
   });
 
   export default api;

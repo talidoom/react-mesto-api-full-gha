@@ -5,7 +5,7 @@ const { createUser } = require('../controllers/users');
 const { urlRegexPattern } = require('../utils/constants');
 
 router.post(
-  '/signup',
+  '/sign-up',
   celebrate({
     body: Joi.object().keys({
       email: Joi.string().required().email(),

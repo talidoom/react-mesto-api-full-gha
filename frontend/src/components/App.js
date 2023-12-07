@@ -220,6 +220,7 @@ React.useEffect(() => {
     auth
       .register(data)
       .then((res) => {
+        console.log(res);
         if (res && res.data) {
           openInfoTooltipPopup(true);
           navigate('/sign-in');
@@ -235,7 +236,6 @@ React.useEffect(() => {
     auth
       .authorize(data)
       .then((res) => {
-        console.log(res);
         if (res && res.token) {
           // setCurrentUser({ ...currentUser, email: data.email });
           setCurrentUser(currentUser);

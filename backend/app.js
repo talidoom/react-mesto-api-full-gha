@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const limiter = require('./middlewares/rateLimiter');
 const routeSignup = require('./routes/signup');
 const routeSignin = require('./routes/signin');
 const auth = require('./middlewares/auth');
 const routeUsers = require('./routes/users');
 const routeCards = require('./routes/cards');
-const cors = require('cors');
 
 const NotFoundError = require('./errors/NotFoundError');
 const errorHandler = require('./middlewares/errorHandler');

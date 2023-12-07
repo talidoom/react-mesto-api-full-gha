@@ -30,26 +30,40 @@ function App() {
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    api.getCards()
-    .then((card) => {
-      setCards(card);
+  // React.useEffect(() => {
+  //   api.getCards()
+  //   .then((card) => {
+  //     setCards(card);
+  //   })
+  //   .catch((err) => {
+  //     console.log(`Ошибка ${err}`);
+  //   });
+  // }, []);
+
+  // React.useEffect(() => {
+  //   api
+  //     .getUserInfo()
+  //     .then((data) => {
+  //       setCurrentUser(data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(`Ошибка ${err}`);
+  //     });
+  // }, []);
+
+React.useEffect(() => {
+  if (isLoggedIn) {
+    Promise.all([api.getUserInfo(), api.getCards()])
+    .then(([data, cards]) => {
+      setCurrentUser(data);
+      setCards(cards);
     })
     .catch((err) => {
       console.log(`Ошибка ${err}`);
+      openInfoTooltipPopup(false);
     });
-  }, []);
-
-  React.useEffect(() => {
-    api
-      .getUserInfo()
-      .then((data) => {
-        setCurrentUser(data);
-      })
-      .catch((err) => {
-        console.log(`Ошибка ${err}`);
-      });
-  }, []);
+  }
+}, [isLoggedIn])
 
   React.useEffect(() => {
     function closeByEscape(evt) {
@@ -65,19 +79,19 @@ function App() {
     }
   }, [isOpen])
 
-  React.useEffect(() => {
-    if (isLoggedIn) {
-      Promise.all([api.getUserInfo(), api.getCards()])
-        .then(([data, cards]) => {
-          setCurrentUser({ ...currentUser, ...data });
-          setCards(cards);
-        })
-        .catch((err) => {
-          console.log(`Ошибка ${err}`);
-          openInfoTooltipPopup(false);
-        });
-    }
-  }, [isLoggedIn]);
+  // React.useEffect(() => {
+  //   if (isLoggedIn) {
+  //     Promise.all([api.getUserInfo(), api.getCards()])
+  //       .then(([data, cards]) => {
+  //         setCurrentUser({ ...currentUser, ...data });
+  //         setCards(cards);
+  //       })
+  //       .catch((err) => {
+  //         console.log(`Ошибка ${err}`);
+  //         openInfoTooltipPopup(false);
+  //       });
+  //   }
+  // }, [isLoggedIn]);
 
   function tokenCheck () {
     const token = localStorage.getItem('jwt');

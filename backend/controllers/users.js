@@ -41,11 +41,13 @@ function createUser(req, res, next) {
     .then((user) => {
       const { _id } = user;
       return res.status(HTTP_CREATED_CODE).send({
-        email,
-        name,
-        about,
-        avatar,
-        _id,
+        data: {
+          email,
+          name,
+          about,
+          avatar,
+          _id,
+        },
       });
     })
     .catch((err) => {

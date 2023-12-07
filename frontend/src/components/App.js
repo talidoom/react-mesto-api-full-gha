@@ -222,10 +222,10 @@ React.useEffect(() => {
       .then((res) => {
         console.log(res);
         console.log(res.data);
-        // if (res && res.data) {
+        if (res && res.data) {
           openInfoTooltipPopup(true);
           navigate('/sign-in');
-        // }
+        }
       })
       .catch((err) => {
         console.log(`Ошибка ${err}`);

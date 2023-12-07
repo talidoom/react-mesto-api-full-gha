@@ -11,6 +11,10 @@ class Api {
       return Promise.reject(`Ошибка ${res.status}`);
   }
 
+  setToken(token) {
+    this._headers.Authorization = `Bearer ${token}`;
+  }
+
     getCards() {
       return fetch(`${this._baseUrl}/cards`, {
         method: 'GET',
@@ -76,10 +80,11 @@ class Api {
   const api = new Api({
     baseUrl: 'http://api.talidoom.students.nomoredomainsmonster.ru',
     headers: {
+      // authorization: "",
       // authorization: '54d35243-1fca-49b5-b527-f8e0d850da93',
-      // authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzAxMjcyMzE0fQ.l9w-71hBtRut6yM_dbngU2Uhzn2XZVJLsi12s-8KJo4',
+      authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzAxMjcyMzE0fQ.l9w-71hBtRut6yM_dbngU2Uhzn2XZVJLsi12s-8KJo4',
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': "*"
+      // 'Access-Control-Allow-Origin': "*"
     },
   });
 

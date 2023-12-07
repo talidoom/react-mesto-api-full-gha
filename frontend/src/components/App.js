@@ -27,14 +27,14 @@ function App() {
   const [isSignIn, setIsSignIn] = React.useState(true);
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-  const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard 
+  const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard
   const navigate = useNavigate();
 
   React.useEffect(() => {
     api.getCards()
     .then((card) => {
       setCards(card);
-    }) 
+    })
     .catch((err) => {
       console.log(`Ошибка ${err}`);
     });
@@ -57,13 +57,13 @@ function App() {
         closeAllPopups();
       }
     }
-    if(isOpen) { 
+    if(isOpen) {
       document.addEventListener('keydown', closeByEscape);
       return () => {
         document.removeEventListener('keydown', closeByEscape);
       }
     }
-  }, [isOpen]) 
+  }, [isOpen])
 
   React.useEffect(() => {
     if (isLoggedIn) {
@@ -79,19 +79,17 @@ function App() {
     }
   }, [isLoggedIn]);
 
-  React.useEffect(() => {
-    tokenCheck();
-  }, []);
-
   function tokenCheck () {
     const token = localStorage.getItem('jwt');
     if (token) {
       auth
         .getContent(token)
         .then((res) => {
-          if (res && res.data) {
+          // if (res && res.data) {
+          if (res) {
+            api.setToken(token);
             setIsLoggedIn(true);
-            setCurrentUser({ ...currentUser, email: res.data.email });
+            // setCurrentUser({ ...currentUser, email: res.data.email });
             navigate('/');
           }
         })
@@ -101,7 +99,11 @@ function App() {
         });
     }
   };
-  
+
+  React.useEffect(() => {
+    tokenCheck();
+  }, []);
+
   function openInfoTooltipPopup(isSignIn) {
     setIsOpenInfoTooltip(true);
     setIsSignIn(isSignIn);
@@ -196,6 +198,7 @@ function App() {
   function signOut () {
     setIsLoggedIn(false);
     setCurrentUser(defaultUser);
+    api.setToken(null);
     localStorage.removeItem('jwt');
   };
 
@@ -219,9 +222,13 @@ function App() {
       .authorize(data)
       .then((res) => {
         if (res && res.token) {
-          setCurrentUser({ ...currentUser, email: data.email });
+          // setCurrentUser({ ...currentUser, email: data.email });
+          setCurrentUser(currentUser);
           localStorage.setItem('jwt', res.token);
-          tokenCheck();
+          api.setToken(res.token);
+          setIsLoggedIn(true);
+          navigate("/");
+          // tokenCheck();
         }
       })
       .catch((err) => {
@@ -233,14 +240,14 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
     <div className="page">
-      <Header 
-        isLoggedIn={isLoggedIn}     
-        email={currentUser.email}     
-        onSignOut={signOut} 
+      <Header
+        isLoggedIn={isLoggedIn}
+        email={currentUser.email}
+        onSignOut={signOut}
       />
 
       <Routes>
-        <Route path='/' 
+        <Route path='/'
           element={<ProtectedRoute
             element={Main}
             isLoggedIn={isLoggedIn}
@@ -259,9 +266,9 @@ function App() {
             title='Регистрация'
             buttonText='Зарегистрироваться'
         />}/>
-        
-        <Route path='/sign-in' 
-          element={<Login 
+
+        <Route path='/sign-in'
+          element={<Login
             title='Вход'
             buttonText='Войти'
             onLogin={handleLogin}
@@ -269,7 +276,7 @@ function App() {
 
         <Route
           path='/*'
-          element={isLoggedIn ? (<Navigate to='/' replace />) : 
+          element={isLoggedIn ? (<Navigate to='/' replace />) :
             (<Navigate to='/sign-in' replace />)
           }
         />
@@ -303,19 +310,19 @@ function App() {
         onUpdateAvatar={handleUpdateAvatar}
       />
 
-      <ImagePopup 
+      <ImagePopup
         popup={'picture'}
         card={selectedCard}
         onClose={closeAllPopups}
       />
 
-      <PopupWithForm 
-        title={'Вы уверены?'} 
-        popup={'delete-card'} 
+      <PopupWithForm
+        title={'Вы уверены?'}
+        popup={'delete-card'}
         submitButtonText={'Да'}
         onClose={closeAllPopups}
       />
-        
+
     </div>
     </CurrentUserContext.Provider>
   );

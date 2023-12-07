@@ -221,10 +221,10 @@ React.useEffect(() => {
       .register(data)
       .then((res) => {
         console.log(res);
-        if (res && res.data) {
+        // if (res && res.data) {
           openInfoTooltipPopup(true);
           navigate('/sign-in');
-        }
+        // }
       })
       .catch((err) => {
         console.log(`Ошибка ${err}`);

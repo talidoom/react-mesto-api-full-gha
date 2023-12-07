@@ -21,7 +21,8 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(cors({
-  origin: ['http://talidoom.students.nomoredomainsmonster.ru', 'http://api.talidoom.students.nomoredomainsmonster.ru'],
+  // origin: ['http://talidoom.students.nomoredomainsmonster.ru', 'http://api.talidoom.students.nomoredomainsmonster.ru'],
+  origin: '*',
 }));
 
 mongoose.set('strictQuery', true);

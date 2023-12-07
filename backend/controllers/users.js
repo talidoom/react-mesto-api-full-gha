@@ -10,6 +10,7 @@ const NotFoundError = require('../errors/NotFoundError');
 const { HTTP_CREATED_CODE } = require('../utils/constants');
 
 function login(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
   const { email, password } = req.body;
   User.findUserByCredentials(email, password)
     .then(({ _id: userId }) => {

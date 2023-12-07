@@ -240,6 +240,7 @@ React.useEffect(() => {
           setCurrentUser(currentUser);
           localStorage.setItem('jwt', res.token);
           api.setToken(res.token);
+          console.log(res)
           setIsLoggedIn(true);
           navigate("/");
           // tokenCheck();

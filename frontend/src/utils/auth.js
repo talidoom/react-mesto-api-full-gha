@@ -1,5 +1,5 @@
 // export const baseUrl = " https://auth.nomoreparties.co";
-export const baseUrl = "http://localhost/api"
+export const baseUrl = "http://api.talidoom.students.nomoredomainsmonster.ru"
 
 function getJson(res) {
   if (res.ok) {
@@ -9,7 +9,7 @@ function getJson(res) {
 }
 
 export function register(data) {
-  return fetch(`${baseUrl}/signup`, {
+  return fetch(`${baseUrl}/sign-up`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export function register(data) {
 }
 
 export function authorize(data) {
-  return fetch(`${baseUrl}/signin`, {
+  return fetch(`${baseUrl}/sign-in`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -220,8 +220,8 @@ React.useEffect(() => {
     auth
       .register(data)
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
+        // console.log(res);
+        // console.log(res.data);
         if (res && res.data) {
           openInfoTooltipPopup(true);
           navigate('/sign-in');
@@ -237,7 +237,10 @@ React.useEffect(() => {
     auth
       .authorize(data)
       .then((res) => {
-        if (res && res.token) {
+        console.log(res);
+        console.log(res.token);
+        // if (res && res.token) {
+        if (res) {
           // setCurrentUser({ ...currentUser, email: data.email });
           setCurrentUser(currentUser);
           localStorage.setItem('jwt', res.token);

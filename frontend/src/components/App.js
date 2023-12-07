@@ -235,12 +235,12 @@ React.useEffect(() => {
     auth
       .authorize(data)
       .then((res) => {
+        console.log(res);
         if (res && res.token) {
           // setCurrentUser({ ...currentUser, email: data.email });
           setCurrentUser(currentUser);
           localStorage.setItem('jwt', res.token);
           api.setToken(res.token);
-          console.log(res)
           setIsLoggedIn(true);
           navigate("/");
           // tokenCheck();

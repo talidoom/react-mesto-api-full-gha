@@ -220,7 +220,7 @@ React.useEffect(() => {
     auth
       .register(data)
       .then((res) => {
-        console.log(res);
+        console.log("TESTTTTTTTTTTTTTT");
         // if (res && res.data) {
           openInfoTooltipPopup(true);
           navigate('/sign-in');

@@ -10,16 +10,13 @@ const NotFoundError = require('../errors/NotFoundError');
 const { HTTP_CREATED_CODE } = require('../utils/constants');
 
 function login(req, res, next) {
-  // res.header('Access-Control-Allow-Origin', '*');
   const { email, password } = req.body;
   User.findUserByCredentials(email, password)
-    .then(({ _id: userId }) => {
-      if (userId) {
-        const token = jwt.sign({ userId }, JWT_SECRET, {
-          expiresIn: '7d',
-        });
-        return res.send({ _id: token });
-      }
+    .then((user) => {
+      const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
+        expiresIn: '7d',
+      });
+      res.send({ token });
       throw new UnauthorizedError('Передан неверный логин или пароль');
     })
     .catch(next);

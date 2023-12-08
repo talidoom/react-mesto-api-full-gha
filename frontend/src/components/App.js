@@ -101,6 +101,7 @@ React.useEffect(() => {
         .then((res) => {
           // if (res && res.data) {
           if (res) {
+            console.log(res.token);
             api.setToken(token);
             setIsLoggedIn(true);
             // setCurrentUser({ ...currentUser, email: res.data.email });

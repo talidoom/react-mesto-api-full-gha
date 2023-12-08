@@ -22,7 +22,7 @@ module.exports = (req, res, next) => {
     return next(new UnauthorizedError(`${'Передан неверный токен авторизации'}!`));
   }
 
-  res.user = payload;
+  req.user = payload;
 
   return next();
 };

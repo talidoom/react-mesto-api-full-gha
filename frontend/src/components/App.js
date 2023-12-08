@@ -95,12 +95,14 @@ React.useEffect(() => {
 
   function tokenCheck () {
     const token = localStorage.getItem('jwt');
+    console.log(`oooo ${token}`);
     if (token) {
+      console.log(`aaaa ${token}`);
       auth
         .getContent(token)
         .then((res) => {
-          // if (res && res.data) {
-          if (res) {
+          if (res && res.data) {
+          // if (res) {
             console.log(res.token);
             api.setToken(token);
             setIsLoggedIn(true);

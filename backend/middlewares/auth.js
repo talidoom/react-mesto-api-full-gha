@@ -6,7 +6,7 @@ const { JWT_SECRET } = require('../utils/constants');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 
 module.exports = (req, res, next) => {
-  const { authorization } = res.headers;
+  const { authorization } = req.headers;
   const bearer = 'Bearer ';
   if (!authorization || !authorization.startsWith(bearer)) {
     return next(new UnauthorizedError(`${'Нет токена авторизации'}(${authorization})!`));
@@ -21,7 +21,7 @@ module.exports = (req, res, next) => {
     return next(new UnauthorizedError(`${'Передан неверный токен авторизации'}!`));
   }
 
-  req.user = payload;
+  res.user = payload;
 
   return next();
 };

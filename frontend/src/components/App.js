@@ -242,8 +242,8 @@ React.useEffect(() => {
       .then((res) => {
         console.log(res);
         console.log(res.token);
-        // if (res && res.token) {
-        if (res) {
+        if (res && res.token) {
+        // if (res) {
           // setCurrentUser({ ...currentUser, email: data.email });
           setCurrentUser(currentUser);
           localStorage.setItem('jwt', res.token);

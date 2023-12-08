@@ -13,7 +13,6 @@ export function register(data) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      //  Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzAxMjcyMzE0fQ.l9w-71hBtRut6yM_dbngU2Uhzn2XZVJLsi12s-8KJo4',
     },
     body: JSON.stringify(data),
   }).then(getJson);
@@ -24,7 +23,6 @@ export function authorize(data) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      // Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzAxMjcyMzE0fQ.l9w-71hBtRut6yM_dbngU2Uhzn2XZVJLsi12s-8KJo4',
     },
     body: JSON.stringify(data),
   }).then(getJson);

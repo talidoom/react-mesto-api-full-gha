@@ -6,14 +6,14 @@ const { JWT_SECRET } = require('../utils/constants');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 
 module.exports = (req, res, next) => {
-  const { Authorization } = req.headers;
+  const { authorization } = req.headers;
   console.log(req.headers);
   const bearer = 'Bearer ';
-  if (!Authorization || !Authorization.startsWith(bearer)) {
-    throw new UnauthorizedError(`${'Нет токена авторизации'}(${Authorization})!`);
+  if (!authorization || !authorization.startsWith(bearer)) {
+    throw new UnauthorizedError(`${'Нет токена авторизации'}(${authorization})!`);
   }
 
-  const token = Authorization.replace(bearer, '');
+  const token = authorization.replace(bearer, '');
   let payload;
   try {
     payload = jwt.verify(token, JWT_SECRET);

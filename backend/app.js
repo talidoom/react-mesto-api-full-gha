@@ -47,7 +47,6 @@ app.use(limiter);
 
 app.use('/', routeSignup);
 app.use('/', routeSignin);
-// app.post('sign-up', )
 
 app.use(auth);
 

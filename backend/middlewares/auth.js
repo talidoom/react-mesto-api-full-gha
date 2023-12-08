@@ -7,6 +7,7 @@ const UnauthorizedError = require('../errors/UnauthorizedError');
 
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
+  console.log(req.headers);
   const bearer = 'Bearer ';
   if (!authorization || !authorization.startsWith(bearer)) {
     return next(new UnauthorizedError(`${'Нет токена авторизации'}(${authorization})!`));

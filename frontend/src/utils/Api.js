@@ -80,9 +80,9 @@ class Api {
   const api = new Api({
     baseUrl: 'http://api.talidoom.students.nomoredomainsmonster.ru',
     headers: {
-      // Authorization: "",
+      Authorization: "",
       // authorization: '54d35243-1fca-49b5-b527-f8e0d850da93',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzAxMjcyMzE0fQ.l9w-71hBtRut6yM_dbngU2Uhzn2XZVJLsi12s-8KJo4',
+      // Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzAxMjcyMzE0fQ.l9w-71hBtRut6yM_dbngU2Uhzn2XZVJLsi12s-8KJo4',
       'Content-Type': 'application/json',
       // 'Access-Control-Allow-Origin': "*"
     },

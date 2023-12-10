@@ -68,10 +68,4 @@ app.use((req, res, next) => next(new NotFoundError('Запрашиваемый �
 app.use(errors());
 app.use(errorHandler);
 
-// app.listen(PORT);
-app.listen(PORT, (err) => {
-  if (err) {
-    console.log('Error in server setup');
-  }
-  console.log('Server listening on Port', PORT);
-});
+app.listen(PORT);

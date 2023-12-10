@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP 51.250.3.92
+IP 158.160.59.108
 
 Frontend https://talidoom.students.nomoredomainsmonster.ru
 

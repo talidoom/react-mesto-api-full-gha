@@ -3,7 +3,6 @@ const AccessDeniedError = require('../errors/AccessDeniedError');
 const NotFoundError = require('../errors/NotFoundError');
 const BadRequestError = require('../errors/BadRequestError');
 
-
 function getCards(_, res, next) {
   Card.find({})
     .then((cards) => res.send({ data: cards }))

@@ -72,8 +72,6 @@ function createUser(req, res, next) {
     });
 }
 
-
-
 function getUsersInfo(_, res, next) {
   User.find({})
     .then((users) => res.send({ users }))

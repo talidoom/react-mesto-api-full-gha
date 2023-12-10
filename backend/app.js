@@ -59,10 +59,10 @@ app.use('/', routeSignin);
 
 app.use(auth);
 
-app.use(errorLogger);
-
 app.use('/users', routeUsers);
 app.use('/cards', routeCards);
+
+app.use(errorLogger);
 
 app.use((req, res, next) => next(new NotFoundError('Запрашиваемый ресурс не найден.')));
 app.use(errors());

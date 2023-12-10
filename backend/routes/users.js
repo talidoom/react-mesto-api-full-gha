@@ -1,18 +1,17 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
-const { urlRegexPattern } = require('../utils/constants');
 
+const { urlRegexPattern } = require('../utils/constants');
 const {
   getUsersInfo,
-  getUserById,
-  getUserInfo,
+  getUserId,
+  getCurrentUserInfo,
   updateUserProfile,
   updateAvatar,
 } = require('../controllers/users');
 
 router.get('/', getUsersInfo);
-
-router.get('/me', getUserInfo);
+router.get('/me', getCurrentUserInfo);
 
 router.get(
   '/:id',
@@ -21,7 +20,7 @@ router.get(
       id: Joi.string().length(24).hex().required(),
     }),
   }),
-  getUserById,
+  getUserId,
 );
 
 router.patch(

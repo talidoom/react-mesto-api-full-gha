@@ -1,29 +1,29 @@
+// подключаем dotenv, чтобы секретный
+// ключ из файла .env работал на сервере
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
-const cors = require('cors');
+
 const limiter = require('./middlewares/rateLimiter');
+const cors = require('./middlewares/cors');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
+
 const routeSignup = require('./routes/signup');
 const routeSignin = require('./routes/signin');
+
 const auth = require('./middlewares/auth');
+
 const routeUsers = require('./routes/users');
 const routeCards = require('./routes/cards');
 
 const NotFoundError = require('./errors/NotFoundError');
 const errorHandler = require('./middlewares/errorHandler');
 
-const { requestLogger, errorLogger } = require('./middlewares/logger');
-
 const URL = 'mongodb://127.0.0.1:27017/mestodb';
 const { PORT = 3000 } = process.env;
-const app = express();
-
-app.use(cors({
-  // origin: ['http://talidoom.students.nomoredomainsmonster.ru', 'http://api.talidoom.students.nomoredomainsmonster.ru'],
-  origin: '*',
-}));
 
 mongoose.set('strictQuery', true);
 
@@ -36,12 +36,21 @@ mongoose
     console.log('Ошбика подключения к БД');
   });
 
-app.use(requestLogger); // Подключаем логгер до обработчиков роутов
+const app = express();
 
 app.use(helmet());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(requestLogger);
+app.use(cors);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.use(limiter);
 
@@ -50,11 +59,12 @@ app.use('/', routeSignin);
 
 app.use(auth);
 
+app.use(errorLogger);
+
 app.use('/users', routeUsers);
 app.use('/cards', routeCards);
 
-app.use((req, res, next) => next(new NotFoundError('Ресурс не найден')));
-app.use(errorLogger); // Подключаем логгер до обработчиков роутов
+app.use((req, res, next) => next(new NotFoundError('Запрашиваемый ресурс не найден.')));
 app.use(errors());
 app.use(errorHandler);
 

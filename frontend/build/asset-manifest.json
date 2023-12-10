@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.3896bdcb.css",
-    "main.js": "/static/js/main.c905c151.js",
-    "static/media/profile-ava.jpg": "/static/media/profile-ava.c7bb7d56a91d723b2428.jpg",
-    "static/media/logo-header.svg": "/static/media/logo-header.6129e9de9314a1b289291e0d348b0752.svg",
-    "static/media/like-white.svg": "/static/media/like-white.1ad06e85f169668a1f36.svg",
-    "static/media/error.svg": "/static/media/error.df8eddf661ff88f2d0efd3d570d14309.svg",
-    "static/media/Trash.svg": "/static/media/Trash.ce3b64935accf9b8212e.svg",
-    "static/media/successful.svg": "/static/media/successful.1b6082f862eac35e2514460237d96ecc.svg",
-    "index.html": "/index.html",
-    "static/media/like-black.svg": "/static/media/like-black.35948469632d0421d697.svg",
-    "static/media/profile-edit.svg": "/static/media/profile-edit.6c7bf05444b9793fdf6e.svg",
-    "static/media/close-button.svg": "/static/media/close-button.039f1f5203f653b4bacd.svg",
-    "static/media/add-button.svg": "/static/media/add-button.bed8c136e13907f5eefb.svg",
-    "main.3896bdcb.css.map": "/static/css/main.3896bdcb.css.map",
-    "main.c905c151.js.map": "/static/js/main.c905c151.js.map"
+    "main.css": "/react-mesto-auth/static/css/main.30d6955c.css",
+    "main.js": "/react-mesto-auth/static/js/main.af3e8514.js",
+    "static/media/profile-ava.jpg": "/react-mesto-auth/static/media/profile-ava.c7bb7d56a91d723b2428.jpg",
+    "static/media/logo-header.svg": "/react-mesto-auth/static/media/logo-header.6129e9de9314a1b289291e0d348b0752.svg",
+    "static/media/like-white.svg": "/react-mesto-auth/static/media/like-white.1ad06e85f169668a1f36.svg",
+    "static/media/error.svg": "/react-mesto-auth/static/media/error.d4ce2a261b68c6da973d51ef98afae1a.svg",
+    "static/media/Trash.svg": "/react-mesto-auth/static/media/Trash.ce3b64935accf9b8212e.svg",
+    "static/media/successful.svg": "/react-mesto-auth/static/media/successful.a9eb6caf1da3ff48b215fb1dd9477d74.svg",
+    "index.html": "/react-mesto-auth/index.html",
+    "static/media/like-black.svg": "/react-mesto-auth/static/media/like-black.35948469632d0421d697.svg",
+    "static/media/profile-edit.svg": "/react-mesto-auth/static/media/profile-edit.6c7bf05444b9793fdf6e.svg",
+    "static/media/close-button.svg": "/react-mesto-auth/static/media/close-button.039f1f5203f653b4bacd.svg",
+    "static/media/add-button.svg": "/react-mesto-auth/static/media/add-button.bed8c136e13907f5eefb.svg",
+    "main.30d6955c.css.map": "/react-mesto-auth/static/css/main.30d6955c.css.map",
+    "main.af3e8514.js.map": "/react-mesto-auth/static/js/main.af3e8514.js.map"
   },
   "entrypoints": [
-    "static/css/main.3896bdcb.css",
-    "static/js/main.c905c151.js"
+    "static/css/main.30d6955c.css",
+    "static/js/main.af3e8514.js"
   ]
 }

@@ -1,4 +1,4 @@
-const Card = require('../models/card');
+const Card = require('../models/card_model');
 const AccessDeniedError = require('../errors/AccessDeniedError');
 const NotFoundError = require('../errors/NotFoundError');
 const BadRequestError = require('../errors/BadRequestError');

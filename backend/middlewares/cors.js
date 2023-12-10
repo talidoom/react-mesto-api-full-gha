@@ -5,6 +5,8 @@ const allowedCors = [
   'http://localhost:3000',
   'https://localhost:3001',
   'http://localhost:3001',
+  'https://api.talidoom.students.nomoredomainsmonster.ru',
+  'http://api.talidoom.students.nomoredomainsmonster.ru',
 ];
 
 module.exports = (req, res, next) => {
